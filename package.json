@@ -16,6 +16,8 @@
     "@apollo/react-hooks": "^4.0.0",
     "@apollo/react-ssr": "^4.0.0",
     "apollo-boost": "^0.4.9",
+    "google-auth-library": "^6.1.1",
+    "googleapis": "^61.0.0",
     "graphql": "^15.3.0",
     "next": "^9.5.5",
     "next-apollo": "^5.0.0",

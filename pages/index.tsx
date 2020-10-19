@@ -3,7 +3,9 @@ import { useQuery } from "@apollo/react-hooks";
 import withApollo from "../lib/apollo";
 import Link from "next/link";
 import Head from "next/head";
-import { Layout } from "../components/Layout";
+import { Layout, Header } from "../components";
+import { useVideoStats } from "../lib/hooks/videos";
+import VideoList from "../components/VideoList";
 
 const Home = () => {
   const { data } = useQuery(gql`
@@ -16,16 +18,10 @@ const Home = () => {
           excerpt
         }
       }
-      videos {
-        nodes {
-          link
-          slug
-          title
-          id
-        }
-      }
     }
   `);
+
+  const videoStats = useVideoStats();
 
   const posts = data?.posts?.nodes;
 
@@ -34,20 +30,20 @@ const Home = () => {
       <Head>
         <title>Matt Landers</title>
       </Head>
-      <header>
-        <h1>Matt Landers</h1>
-      </header>
+      <Header title="Blogs" />
       {posts &&
         posts.map((post) => (
           <article key={post.id}>
             <h2>
-              <Link href={`/[slug]`} as={`/${post.slug}`}>
+              <Link href={`/blog/[slug]`} as={`/blog/${post.slug}`}>
                 <a>{post.title}</a>
               </Link>
             </h2>
             <div dangerouslySetInnerHTML={{ __html: post.excerpt }} />
           </article>
         ))}
+      <Header title="Videos" />
+      <VideoList items={videoStats} />
     </Layout>
   );
 };

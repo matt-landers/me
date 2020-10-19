@@ -1,16 +1,13 @@
 import Head from "next/head";
+import { Nav } from "./Nav";
 
 export const Layout = (props) => (
   <main>
     <Head>
       <link
-        href="https://fonts.googleapis.com/css?family=Merriweather&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200;0,400;0,900;1,200;1,400;1,900&display=swap"
         rel="stylesheet"
-      />
-      <link
-        href="https://fonts.googleapis.com/css?family=Montserrat:400,700,800,900i&display=swap"
-        rel="stylesheet"
-      />
+      ></link>
     </Head>
     <style jsx global>
       {`
@@ -21,8 +18,8 @@ export const Layout = (props) => (
           padding: 2.625rem 1.3125rem;
         }
         body {
-          font-family: Montserrat, sans-serif;
-          background: rgb(40, 44, 53);
+          font-family: "Source Code Pro", monospace;
+          background: black;
           color: rgba(255, 255, 255, 0.88);
         }
         a {
@@ -42,13 +39,13 @@ export const Layout = (props) => (
           font-size: 1.75rem;
         }
         .post {
-          font-family: "Merriweather", "Georgia", serif;
           font-size: 16px;
           line-height: 28px;
           font-feature-settings: "kern", "liga", "clig", "calt";
         }
       `}
     </style>
+    <Nav />
     {props.children}
   </main>
 );
