@@ -5,7 +5,7 @@ import Link from "next/link";
 import Head from "next/head";
 import { Layout, Header } from "../components";
 import { useVideoStats } from "../lib/hooks/videos";
-import VideoList from "../components/VideoList";
+import { VideoList } from "../components/VideoList";
 
 const Home = () => {
   const { data } = useQuery(gql`

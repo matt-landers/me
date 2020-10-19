@@ -40,7 +40,7 @@ const handler: NextApiHandler = async (
     const videos: Array<{ acfVideoFields: { youtubeId: string } }> =
       result.data.videos.nodes;
     const ids = videos.map((video) => video.acfVideoFields.youtubeId);
-    console.log(ids);
+
     const stats = await YoutubeStats(ids);
     _statsCache.items = stats;
     _statsCache.cachedTime = new Date();
