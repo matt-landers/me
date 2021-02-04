@@ -13,6 +13,8 @@ const _statsCache: StatsCache = {
   items: [],
 };
 
+const _cacheTimeout = 30 * 1000; // 30 seconds
+
 const _query = gql`
   query {
     videos {
@@ -33,7 +35,7 @@ const handler: NextApiHandler = async (
   req: NextApiRequest,
   res: NextApiResponse
 ) => {
-  if (!_statsCache.cachedTime) {
+  if (!_statsCache.cachedTime || (Date.now() - _statsCache.cachedTime.getTime()) > _cacheTimeout) {
     const result = await apolloClient.query({
       query: _query,
     });
