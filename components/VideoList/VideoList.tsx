@@ -25,6 +25,16 @@ export const VideoList = ({ items }: VideoListProps) => {
     totalCounts.likes += parseInt(item.statistics.likeCount);
   });
 
+  items.sort((a, b) => {
+    if (parseInt(a.statistics.viewCount) > parseInt(b.statistics.viewCount)) {
+      return -1;
+    }
+    if (parseInt(a.statistics.viewCount) < parseInt(b.statistics.viewCount)) {
+      return 1;
+    }
+    return 0;
+  });
+
   return (
     <div className={styles.videolist}>
       <h3 className={styles.statistics}>
