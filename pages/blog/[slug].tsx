@@ -28,4 +28,4 @@ const Post = () => {
   );
 };
 
-export default withApollo()(Post);
+export default withApollo({ ssr: true })(Post);
